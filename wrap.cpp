@@ -1,6 +1,7 @@
 #include "wrap.h"
 #include <stdio.h>
 extern "C" {
+
   wDXF* new_DXF() {
     return reinterpret_cast<wDXF*>(new DL_Dxf());
   }
@@ -58,9 +59,63 @@ extern "C" {
   void tableStyle(wWriter* dw, int no) {
     dw->tableStyle(no);
   }
-  
+
   void writeStyle(wDXF* dxf, wWriter* dw, DL_StyleData sd) {
     dxf->writeStyle(*dw, sd);
+  }
+
+  void writeView(wDXF* dxf, wWriter* dw) {
+    dxf->writeView(*dw);
+  }
+  void writeUcs(wDXF* dxf, wWriter* dw) {
+    dxf->writeUcs(*dw);
+  }
+  void tableAppid(wWriter* dw, int no) {
+    dw->tableAppid(no);
+  }
+  void writeAppid(wDXF* dxf, wWriter* dw, const char* str) {
+    dxf->writeAppid(*dw, str);
+  }
+
+  void writeDimStyle(wDXF* dxf, wWriter* dw, double dimasz, double dimexe,
+                      double dimexo, double dimgap, double dimtxt) {
+    dxf->writeDimStyle(*dw, dimasz, dimexe, dimexo, dimgap, dimtxt);
+  }
+
+  void writeBlockRecord(wDXF* dxf, wWriter* dw) {
+    dxf->writeBlockRecord(*dw);
+  }
+
+  void writeBlockRecordChar(wDXF* dxf, wWriter* dw, const char* str) {
+    dxf->writeBlockRecord(*dw, str);
+  }
+
+  void sectionBlocks(wWriter* dw) {
+    dw->sectionBlocks();
+  }
+  void writeBlock(wDXF* dxf, wWriter* dw, DL_BlockData bd) {
+    dxf->writeBlock(*dw, bd);
+  }
+
+  void writeEndBlock(wDXF* dxf, wWriter* dw, const char* bn) {
+    dxf->writeEndBlock(*dw, bn);
+  }
+
+  void sectionEntities(wWriter* dw) {
+    dw->sectionEntities();
+  }
+  void writePoint(wDXF* dxf, wWriter* dw, DL_PointData pd, DL_Attributes a) {
+    dxf->writePoint(*dw, pd, a);
+  }
+  void writeLine(wDXF* dxf, wWriter* dw, DL_LineData pd, DL_Attributes a) {
+    dxf->writeLine(*dw, pd, a);
+  }
+
+  void writeObjects(wDXF* dxf, wWriter* dw) {
+    dxf->writeObjects(*dw);
+  }
+  void writeObjectsEnd(wDXF* dxf, wWriter* dw) {
+    dxf->writeObjectsEnd(*dw);
   }
 
   void writerClose_DXF(wWriter* dw) {
