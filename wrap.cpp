@@ -136,10 +136,14 @@ extern "C" {
     dxf->writeBlockRecord(*dw, str);
   }
 
+  wBlockData* new_BlockData(const char* name, int flags, double bpx, double bpy, double bpz) {
+    return reinterpret_cast<wBlockData*>(new DL_BlockData(name, flags, bpx, bpy, bpz));
+  }
+
   void sectionBlocks(wWriter* dw) {
     dw->sectionBlocks();
   }
-  
+
   void writeBlock(wDXF* dxf, wWriter* dw, DL_BlockData bd) {
     dxf->writeBlock(*dw, bd);
   }

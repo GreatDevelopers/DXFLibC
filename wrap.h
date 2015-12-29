@@ -12,6 +12,7 @@ typedef DL_PointData wPointData;
 typedef DL_LayerData wLayerData;
 typedef DL_LinetypeData wLinetypeData;
 typedef DL_StyleData wStyleData;
+typedef DL_BlockData wBlockData;
 extern "C" {
   wDXF* new_DXF();
   wWriter* out_DXF(wDXF* dxf,const char* fn);
@@ -25,6 +26,7 @@ extern "C" {
   wPointData* new_PointData(double x, double y, double z);
   wLayerData* new_LayerData(const char* name, int flags);
   wLinetypeData* new_LinetypeData(const char*, const char*, int, int, double);
+  wBlockData* new_BlockData(const char* name, int flags, double bpx, double bpy, double bpz);
   wStyleData* new_StyleData(const char* name, int flags, double fixedTextHeight,
                             double widthFactor, double obliqueAngle,
                             int textGenerationFlags, double lastHeightUsed,
